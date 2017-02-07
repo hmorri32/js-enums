@@ -73,7 +73,6 @@ describe('map tests', () => {
     let array = objectKeys.map((singleKey) => {
       let objectFromLarge = largeObject[singleKey]
       objectFromLarge.id = singleKey
-      
       return objectFromLarge
     })
     return array
