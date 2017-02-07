@@ -66,7 +66,7 @@ describe('reduce tests', () => {
     expect(results).equal(2);
   })
 
-  it.only('capitalize keywords in a phrase', () => {
+  it('capitalize keywords in a phrase', () => {
     let keywords = ["fish", "blue"]
     let saying = 'one fish two fish red fish blue fish';
     let results = keywords.reduce((a, b)=> {
@@ -88,9 +88,17 @@ describe('reduce tests', () => {
     expect(results).to.equal('one FISH two FISH red FISH BLUE FISH')
   })
 
-  it.skip('find smallest key and value inside of the object', () => {
+  it.only('find smallest key and value inside of the object', () => {
     let arrayOfObjects = {a: 100, b: 200, c: 300, d: 600}
-    // your code goes here
+    let smallestValue = {}
+
+    let yungKeys = Object.keys(arrayOfObjects)
+
+    let smallestKey = yungKeys.reduce((firstKey, secondKey)=>{
+      return arrayOfObjects[firstKey] < arrayOfObjects[secondKey] ? firstKey : secondKey
+    })
+
+    Object.assign(smallestValue, {[smallestKey]: arrayOfObjects[smallestKey]})
 
     expect(smallestValue).to.deep.equal({a:100})
   })
