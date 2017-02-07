@@ -66,18 +66,24 @@ describe('reduce tests', () => {
     expect(results).equal(2);
   })
 
-  it('capitalize keywords in a phrase', () => {
+  it.only('capitalize keywords in a phrase', () => {
     let keywords = ["fish", "blue"]
     let saying = 'one fish two fish red fish blue fish';
-    let result = saying.split(' ').map((words)=>{
-      if(words === "fish" || words === "blue"){
-        return words.toUpperCase();
-      } else {
-        return words
-      }
-    })
+    let results = keywords.reduce((a, b)=> {
+      let regExp = new RegExp(b, 'g')
+      console.log(regExp)
+      return a.replace(regExp, b.toUpperCase());
+    }, saying)
 
-    let results = result.join(' ');
+    // let result = saying.split(' ').map((words)=>{
+    //   if(words === "fish" || words === "blue"){
+    //     return words.toUpperCase();
+    //   } else {
+    //     return words
+    //   }
+    // })
+    //
+    // let results = result.join(' ');
 
     expect(results).to.equal('one FISH two FISH red FISH BLUE FISH')
   })
