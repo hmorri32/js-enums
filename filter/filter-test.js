@@ -5,22 +5,27 @@ describe('filter tests', () => {
 
   it('should pick the even numbers ', () => {
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    // your code goes here
+    let results = numbers.filter(()=>{
+      return numbers % 1
+    })
+
     expect(results).to.deep.equal([2, 4, 6, 8, 10])
   });
 
   it('should pick the odd numbers ', () => {
     let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-    // your code goes here
+    let results = numbers.filter(()=>{
+      return numbers % 0
+    })
 
     expect(results).to.deep.equal([1, 3, 5, 7, 9])
   });
 
-  it('should pick wordfs with three letteres ', () => {
+  it('should pick words with three letteres ', () => {
     let words = ["pill", "bad", "finger", "cat", "blue", "dog", "table", "red"]
-
-    // your code goes here
+    let results = words.filter(()=>{
+      return words.length === 3
+    })
 
     expect(results).to.deep.equal(["bad", "cat", "dog", "red"])
   });
@@ -28,7 +33,9 @@ describe('filter tests', () => {
   it('should pick arrays only', () => {
     let elements = ["CAT", ["dog"], 23, [56, 3, 8], "AIMLESS", 43, "butter"]
 
-    // your code goes here
+    let results = elements.filter((a)=> {
+      return Array.isArray(a)
+    })
 
     expect(results).to.deep.equal([["dog"], [56, 3, 8]])
   });
@@ -38,7 +45,9 @@ describe('filter tests', () => {
     let tracker = {person: human}
     let saying = 'cool song 2'
 
-    // your code goes here.
+    return human.songs.filter((song)=>{
+      song[0] != saying;
+    })
 
     expect(human.songs).to.deep.equal([['cool song 1', 50],['cool song 3', 90]])
   });
@@ -51,23 +60,27 @@ describe('filter tests', () => {
                     {user:'meeka', message: 'adfasuhlkj'},
                     {user: 'robbie', message: 'im super loud'}]
 
-    // your code goes here
+      let results = messages.filter((str)=>{
+        return str.message.includes(userString)
+      })
 
     expect(results).to.deep.equal([{user: 'alter-nate', message:'suh kewl'},
                                    {user:'meeka', message: 'adfasuhlkj'},
                                    {user: 'robbie', message: 'im super loud'}])
   });
 
-  it('should return the correct ids', ()=> {
+  it.only('should return the correct ids', ()=> {
     let data = [{ account: 'person 1', id: '00112'},
                 { account: 'person 2', id: '00045'},
                 { account: 'person 3', id: '12309'},
                 { account: 'person 4', id: '55931'},
-                { account: 'person 5',id: '90215'}];
+                { account: 'person 5', id: '90215'}];
 
     let ids = ['00112', '90215', '12309']
 
-    // your code goes here
+    let results = data.filter((data) => {
+      return ids.includes(data.id);
+    });
 
     expect(results).to.deep.equal([{ account: 'person 1', id: '00112'},
                                    { account: 'person 3', id: '12309'},
